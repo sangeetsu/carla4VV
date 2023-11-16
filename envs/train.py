@@ -1,6 +1,6 @@
 import gymnasium as gym
 from stable_baselines3 import PPO
-from carla4VV.envs.carla4VV_env import carla4VV_v2 as VV_ENV
+from carla4VV.envs.carla4VV_env import VV_ENV
 from carla4VV.config.config import ENV_CONFIG
 
 # Define your track data and finish line coordinates here

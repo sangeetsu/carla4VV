@@ -1,32 +1,19 @@
 import gymnasium as gym
 from gym import spaces
-from gym.envs.registration import register
 from stable_baselines3 import PPO
 import carla
 import math
 import numpy as np
 import pandas as pd
 import time
-register(
-    id='carla4VV-v2',
-    entry_point=lambda config: carla4VV(
-        config['host'],
-        config['port'],
-        config['track_data_csv'],
-        config['finish_line_coords'],
-        config['off_track_threshold'],
-        config['stationary_threshold']
-    ),
-    # You might want to add kwargs such as max_episode_steps if relevant
-)
 
-class carla4VV(gym.Env):
+class VV_ENV(gym.Env):
 
     metadata = {'render.modes': ['human']}
 
     def __init__(self, host, port, track_data_csv, finish_line_coords, off_track_threshold, stationary_threshold, *args, **kwargs):
-        super(carla4VV, self).__init__()
-        self.env
+        super(VV_ENV, self).__init__()
+        # self.env
         self.client = carla.Client(host, port)
         self.client.set_timeout(10.0)
         self.track_data = self.load_track_data(track_data_csv)
@@ -238,3 +225,4 @@ class carla4VV(gym.Env):
         if self.vehicle:
             self.vehicle.destroy()
             self.vehicle = None
+
